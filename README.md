@@ -36,4 +36,4 @@ manually.
 In most desktop environments a menu entry will have been created under games. If that's not the case you may need to log out and back in again. If you still can't find the icon your DE might not be looking in the directory where flatpak places .desktop files. If that's the case you'll have to run `flatpak run com.introversion.prisonarchitect` manually.
 
 ## Accessing save games etc.
-For sandboxing reasons the game is configured to save user data to `~/.var/app/org.openmw.openmw/.Prison Architect` instead of the usual `~/.Prison Architect`. This directory will have the same structure as it does when Prison Architect is installed systemwide by normal means.
+For sandboxing reasons the game is configured to save user data to `~/.var/app/com.introversion.prisonarchitect/.Prison Architect` instead of the usual `~/.Prison Architect`. This directory will have the same structure as it does when Prison Architect is installed systemwide by normal means.
