@@ -1,0 +1,63 @@
+{
+  "app-id": "com.introversion.prisonarchitect",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "1.4",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "PrisonArchitect",
+  "rename-desktop-file": "PrisonArchitect.desktop",
+  "rename-icon": "prisonarchitect",
+  "finish-args": [
+      /* X11 access */
+      "--socket=x11", "--share=ipc",
+      /* OpenGL access */
+      "--device=dri",
+      /* PulseAudio access */
+      "--socket=pulseaudio",
+      /* Wayland access */
+      "--socket=wayland",
+      /* Savegames */
+      "--persist=.Prison Architect"
+  ],
+
+  "modules": [
+    "modules/fribidi-0.19.7.json",
+    "modules/glu-9.0.0.json",
+    {
+      "name": "prisonarchitect",
+      "buildsystem": "simple",
+      "build-commands": [
+	"mkdir -p /app/share/applications",
+	"mv PrisonArchitect.desktop /app/share/applications/",
+
+	"mkdir -p /app/share/icons/hicolor/128x128/apps/",
+	"mv prisonarchitect.png /app/share/icons/hicolor/128x128/apps/prisonarchitect.png",
+
+	"mkdir -p /app/prisonarchitect",
+	"cp -r * /app/prisonarchitect/",
+
+	"mkdir -p /app/bin",
+	"cp launcher /app/bin/PrisonArchitect"
+      ], 
+      "sources" : [
+        {
+          "type": "archive",
+          "path": "prisonarchitect.tar.gz"
+        },
+        {
+          "type": "file",
+          "path": "PrisonArchitect.desktop"
+        },
+        {
+          "type": "file",
+          "url": "http://www.introversion.co.uk/prisonarchitect/images/tier/tier_icon250.png",
+	  "sha256": "1eacf1f2eb82fca67367aff8135bb8d2fe0be6339264aafbe1325e137dcdc924",
+	  "dest-filename": "prisonarchitect.png"
+        },
+        {
+          "type": "file",
+          "path": "launcher"
+        }
+       ]
+    }
+  ]
+}
